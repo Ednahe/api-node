@@ -10,7 +10,7 @@ module.exports.setPosts = async (req, res) => {
         res.status(400).json({message : "Merci d'ajouter un message"});
     }
 
-    const post = await PostModel.create({
+    const post = await postModel.create({
         message: req.body.message,
         author: req.body.author,
     })
@@ -50,8 +50,19 @@ module.exports.likePost = async (req, res) => {
             req.params.id,
             {$addToSet: {likers: req.body.userId}},
             {new: true}
-        )
+        ).then((data) => res.status(200).send(data));
+    } catch (err) {
+        res.status(400).json(err)
+    }
+}
 
+module.exports.dislikePost = async (req, res) => {
+    try {
+        await postModel.findByIdAndUpdate(
+            req.params.id,
+            {$pull: {likers: req.body.userId}},
+            {new: true}
+        ).then((data) => res.status(200).send(data));
     } catch (err) {
         res.status(400).json(err)
     }
