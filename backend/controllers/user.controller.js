@@ -1,4 +1,11 @@
 const User = require('../models/user.model');
+const jwt = require('jsonwebtoken');
+
+const SECRET_KEY = process.env.SECRET_KEY;
+
+const generateToken = (user) => {
+    return jwt.sign({ id: user._id, email: user.email }, SECRET_KEY);
+};
 
 module.exports.registerUser = async (req, res) => {
     try {
@@ -12,7 +19,8 @@ module.exports.registerUser = async (req, res) => {
         const newUser = new User({ username, email, password });
         await newUser.save();
 
-        res.status(201).json({ message: 'Utilisateur créé avec succès.', user: newUser});
+        const token = generateToken(newUser);
+        res.status(201).json({ message: 'Utilisateur créé avec succès.', user: newUser, token});
     } catch (error) {
         res.status(500).json({ message: 'Erreur lors de la création utilisateur.', error: error.message});
     }
@@ -32,9 +40,20 @@ module.exports.loginUser = async (req, res) => {
             return res.status(400).json({ message: 'mort de passe incorrect.'})
         }
 
-        res.status(200).json({ message: 'Connexion réussie', user})
+        const token = generateToken(user);
+        res.status(200).json({ message: 'Connexion réussie', user, token})
     } catch (error) {
         res.status(500).json({ message: 'Erreur lors de la connexion.', error: error.message });
+    }
+};
+
+module.exports.logoutUser = async (req, res) => {
+    try {
+        // 
+        
+        res.status(200).json({ message: 'Déconnexion réussie.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Erreur lors de la déconnexion.', error: error.message });
     }
 };
 
