@@ -49,7 +49,8 @@ module.exports.loginUser = async (req, res) => {
 
 module.exports.logoutUser = async (req, res) => {
     try {
-        // 
+        // à faire
+        console.log(res);
         
         res.status(200).json({ message: 'Déconnexion réussie.' });
     } catch (error) {
