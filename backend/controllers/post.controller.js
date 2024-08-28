@@ -18,10 +18,18 @@ module.exports.setPosts = async (req, res) => {
         if (!message) {
             res.status(400).json({message : "Merci d'ajouter un message"});
         }
+
+        // chercher l'utilisateur
+        const user = await userModel.findOne({ username: author });
+        if (!user) {
+            return res.status(404).json({ message: "Utilisateur non trouvé." });
+        }
+
         const post = await postModel.create({
             message,
-            author,
+            author: user._id,
         });
+
         res.status(201).json(post);
     } catch(error) {
         res.status(500).json({ message: 'Erreur lors de la création du message.', error: error.message });
