@@ -1,4 +1,5 @@
 const User = require('../models/user.model');
+const Blacklist = require('../models/backlist.model');
 const jwt = require('jsonwebtoken');
 
 const SECRET_KEY = process.env.SECRET_KEY;
@@ -49,7 +50,8 @@ module.exports.loginUser = async (req, res) => {
 
 module.exports.logoutUser = async (req, res) => {
     try {
-        // à faire
+        const token = req.header('Authorization').replace('Bearer ', '');
+        await Blacklist.create({ token });
         console.log(res);
         
         res.status(200).json({ message: 'Déconnexion réussie.' });

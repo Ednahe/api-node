@@ -4,13 +4,16 @@ const postSchema = mongoose.Schema({
     message: {
         type: String,
         required: true,
+        trim: true,
     },
     author: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true,
     },
     likers: {
-        type: [String],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
     },
 },
 {
