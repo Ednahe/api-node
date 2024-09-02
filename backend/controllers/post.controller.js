@@ -45,6 +45,11 @@ module.exports.editPost = async (req, res) => {
             return res.status(404).json({ message: "Ce post n'existe pas." });
         }
 
+        // Vérifier si l'utilisateur connecté est bien l'auteur du post
+        if (post.author.toString() !== req.userId) {
+            return res.status(403).json({ message: "Accès refusé. Vous n'êtes pas l'auteur de ce message." });
+        }
+
         const updatedPost = await postModel.findByIdAndUpdate(
             req.params.id,
             req.body,
