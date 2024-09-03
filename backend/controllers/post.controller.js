@@ -1,5 +1,6 @@
 const postModel = require('../models/post.model');
 const userModel = require('../models/user.model');
+const mongoose = require('mongoose');
 
 // afficher les messages
 module.exports.getPosts = async (req, res) => {
@@ -14,21 +15,16 @@ module.exports.getPosts = async (req, res) => {
 // créer un message
 module.exports.setPosts = async (req, res) => {
     try {
-        const { message, author } = req.body;
+        const { message } = req.body;
+        const author = req.userId;
         if (!message) {
             res.status(400).json({message : "Merci d'ajouter un message"});
         }
-
-        // chercher l'utilisateur
-        const user = await userModel.findOne({ username: author });
-        if (!user) {
-            return res.status(404).json({ message: "Utilisateur non trouvé." });
-        }
-
+        
         const post = await postModel.create({
             message,
-            author: user._id,
-        });
+            author: new mongoose.Types.ObjectId(author),
+        })
 
         res.status(201).json(post);
     } catch(error) {
@@ -45,8 +41,13 @@ module.exports.editPost = async (req, res) => {
             return res.status(404).json({ message: "Ce post n'existe pas." });
         }
 
+        const userIdObject = new mongoose.Types.ObjectId(req.userId);
+
         // Vérifier si l'utilisateur connecté est bien l'auteur du post
-        if (post.author.toString() !== req.userId) {
+        console.log('post.author:', post.author);
+        console.log('req.userId:', req.userId);
+
+        if (!post.author.equals(userIdObject)) {
             return res.status(403).json({ message: "Accès refusé. Vous n'êtes pas l'auteur de ce message." });
         }
 

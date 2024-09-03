@@ -52,7 +52,6 @@ module.exports.logoutUser = async (req, res) => {
     try {
         const token = req.header('Authorization').replace('Bearer ', '');
         await Blacklist.create({ token });
-        console.log(res);
         
         res.status(200).json({ message: 'Déconnexion réussie.' });
     } catch (error) {
