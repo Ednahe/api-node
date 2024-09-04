@@ -11,10 +11,10 @@ const postSchema = mongoose.Schema({
         ref: 'User',
         required: true,
     },
-    likers: {
+    likers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-    },
+    }],
 },
 {
     timestamps: true,
