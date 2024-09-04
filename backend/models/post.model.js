@@ -11,6 +11,7 @@ const postSchema = mongoose.Schema({
         ref: 'User',
         required: true,
     },
+    // ajout des likes dans un tableau
     likers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
