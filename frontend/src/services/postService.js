@@ -1,56 +1,74 @@
 const API_URL = "http://localhost:5000/post";
 
+// afficher les messages
 export const getPosts = async () => {
     const response = await fetch(API_URL);
-    return await response.json();
+
+    if(!response.ok) {
+        throw new Error('erreur lors de la récupération des messages');
+    }
+
+    return response.json();
 };
 
-export const createPost = async (postData) => {
+// créer un message
+export const createPost = async (postData, token) => {
     const response = await fetch(API_URL, {
         method: "POST",
         headers: {
-            "Content-Type" : "application:json"
+            "Content-Type" : "application:json",
+            Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(postData),
     });
+
+    if(!response.ok) {
+        throw new Error('erreur dans la création du message');
+    }
+
     return await response.json();
 }
 
-export const editPost = async (id, postData) => {
-    const response = await fetch(`${API_URL}/${id}`, {
+// modifier un message
+export const editPost = async (postId, postData, token) => {
+    const response = await fetch(`${API_URL}/${postId}`, {
         method: 'PUT',
         headers: {
-            "Content-Type" : "application:json"
+            "Content-Type" : "application:json",
+            Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(postData),
     });
+
+    if(!response.ok) {
+        throw new Error('erreur dans la modification du message');
+    }
+
     return await response.json();
 }
 
-export const deletePost = async (id) => {
-    await fetch(`${API_URL}/${id}`, {
-        method: "DELETE",
+// supprimer un message
+export const deletePost = async (postId, token) => {
+    const response = await fetch(`${API_URL}/${postId}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
     });
+
+    if(!response.ok) {
+        throw new Error('erreur dans la suppression du message');
+    }
+
+    return response.json();
 };
 
-export const likePost = async (id, userId) => {
-    const response = await fetch(`${API_URL}/like-post/${id}`, {
-        method: 'PATCH',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId }),
-    })
-    return await response.json();
+// à faire
+export const likePost = async (postId) => {
+    console.log('like');
+    
 };
 
-export const dislikePost = async (id, userId) => {
-    const response = await fetch('${API_URL}/dislike-post/${id}', {
-        method: 'PATCH',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId }),
-    });
-    return await response.json();
+export const dislikePost = async (postId) => {
+    console.log('dislike');    
 };
