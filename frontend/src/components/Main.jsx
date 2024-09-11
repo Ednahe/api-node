@@ -10,7 +10,7 @@ const Main = () => {
                 const data = await getPosts();
                 setPosts(data);
             } catch(err) {
-                setError(err.message);
+                console.log(err.message);
             }
         };
 
@@ -23,7 +23,7 @@ const Main = () => {
                  <li key={post._id}>
                      <h3>{post.title}</h3>
                      <p>{post.message}</p>
-                     {/* <p>Auteur: {post.author}</p> */}
+                     <p>Auteur: {post.author?.username}</p>
                  </li>
              ))}
         </ul>
