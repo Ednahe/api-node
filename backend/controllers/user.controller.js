@@ -38,7 +38,7 @@ module.exports.loginUser = async (req, res) => {
 
         const passwordValide = await user.isPasswordValid(password);
         if(!passwordValide) {
-            return res.status(400).json({ message: 'mort de passe incorrect.'})
+            return res.status(400).json({ message: 'Mot de passe incorrect.'})
         }
 
         const token = generateToken(user);

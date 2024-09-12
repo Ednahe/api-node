@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getPosts } from "../services/postService";
+import SendMessage from "./SendMessage";
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
@@ -16,6 +17,11 @@ const Posts = () => {
 
         fetchPosts();
     }, []);
+
+    const newMessage = (newPost) => {
+        setPosts([...posts, newPost]);
+    }
+
     return <>
         <h1>Hello</h1>
         <ul>
@@ -23,10 +29,11 @@ const Posts = () => {
                  <li key={post._id}>
                      <h3>{post.title}</h3>
                      <p>{post.message}</p>
-                     <p>Auteur: {post.author?.username}</p>
+                     <p>De {post.author?.username}</p>
                  </li>
              ))}
         </ul>
+        <SendMessage messageSend={newMessage} />
     </>
 }
 
