@@ -34,14 +34,14 @@ export const editPost = async (postId, postData, token) => {
     const response = await fetch(`${API_URL}/${postId}`, {
         method: 'PUT',
         headers: {
-            "Content-Type" : "application:json",
+            "Content-Type" : "application/json",
             Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(postData),
     });
 
     if(!response.ok) {
-        throw new Error('erreur dans la modification du message');
+        throw new Error('erreur dans l édition du message');
     }
 
     return await response.json();

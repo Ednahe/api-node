@@ -22,6 +22,7 @@ const EditPost = ({ post, update, cancel }) => {
             }
 
             const updatePost = await editPost(post._id, { message }, token);
+            setError('');
             update(updatePost);
 
         } catch (err) {
