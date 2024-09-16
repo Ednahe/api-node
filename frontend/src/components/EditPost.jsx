@@ -26,7 +26,8 @@ const EditPost = ({ post, update, cancel }) => {
             update(updatePost);
 
         } catch (err) {
-            setError('erreur lors de la modification du message');
+            console.log(err);
+            
         }
     }
 

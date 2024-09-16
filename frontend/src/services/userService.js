@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/post";
+const API_URL = "http://localhost:5000";
 
 // inscription
 export const registerUser = async (userData) => {
@@ -35,9 +35,14 @@ export const login = async (userData) => {
 }
 
 // deconnexion
-export const logout = async (userData) => {
+export const logout = async (userId) => {
+    const token = localStorage.getItem('token');
+    
     const response = await fetch(`${API_URL}/logout/${userId}`, {
         method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,  
+        },
     });
 
     if(!response.ok) {

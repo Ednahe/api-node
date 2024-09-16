@@ -18,18 +18,26 @@ module.exports.setPosts = async (req, res) => {
     try {
         const { message } = req.body;
         const author = req.userId;
+
         if (!message) {
-            res.status(400).json({message : "Merci d'ajouter un message"});
+            return res.status(400).json({message : "Merci d'ajouter un message"});
+        };
+
+        if (!author) {
+            return res.status(400).json({ message: "Utilisateur inconnu" });
         }
         
-        const post = await postModel.create({
+        let post = await postModel.create({
             message,
             author: new mongoose.Types.ObjectId(author),
-        })
+        });
+
+        post = await post.populate('author', 'username');
 
         res.status(201).json(post);
 
     } catch(error) {
+        console.error(error);
         res.status(500).json({ message: 'Erreur lors de la création du message.', error: error.message });
     }
 };
@@ -51,15 +59,18 @@ module.exports.editPost = async (req, res) => {
             return res.status(403).json({ message: "Accès refusé. Vous n'êtes pas l'auteur de ce message." });
         }
 
-        const updatedPost = await postModel.findByIdAndUpdate(
+        let updatedPost = await postModel.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true, runValidators: true }
         );
 
+        updatedPost = await updatedPost.populate('author', 'username');
+
         res.status(200).json(updatedPost);
 
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: 'Erreur lors de la mise à jour du message.', error: error.message });
     }
 }

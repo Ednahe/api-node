@@ -16,13 +16,14 @@ export const createPost = async (postData, token) => {
     const response = await fetch(API_URL, {
         method: "POST",
         headers: {
-            "Content-Type" : "application:json",
+            "Content-Type" : "application/json",
             Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(postData),
     });
-
+    
     if(!response.ok) {
+        console.log('reponse :', response);        
         throw new Error('erreur dans la création du message');
     }
 
@@ -41,6 +42,8 @@ export const editPost = async (postId, postData, token) => {
     });
 
     if(!response.ok) {
+        const error = await response.json();
+        console.log('front error:', error);
         throw new Error('erreur dans l édition du message');
     }
 

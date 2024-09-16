@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const Inscription = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+    const [inscriptionOk, setInscriptionOk] = useState('');
+    const [errorInscription, setErrorInscription] = useState('');
 
     const inscription = async (e) => {
         e.preventDefault();
@@ -20,10 +20,20 @@ const Inscription = () => {
             });
 
             const data = await response.json();
-            localStorage.setItem('token', data.token);
-            navigate('/posts');
+
+            if(response.ok) {
+                setInscriptionOk('Inscription réussi avec succès, vous pouvez maintenant vous connecter !');
+                setErrorInscription('');
+                localStorage.setItem('token', data.token);
+            } else {
+                setErrorInscription(data.message || 'Erreur lors de l\'inscription.');
+                setInscriptionOk('');
+            }
+
 
         } catch (err) {
+            setErrorInscription('Une erreur est survenu lors de l\'inscription.');
+            setInscriptionOk('');
             console.log(err);
         }
     };
@@ -50,6 +60,8 @@ const Inscription = () => {
                 required />
             <button type="submit">S'inscrire</button>
         </form>
+        {inscriptionOk && <p>{inscriptionOk}</p>}
+        {errorInscription && <p>{errorInscription}</p>}
         </>
 };
 
