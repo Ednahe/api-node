@@ -56,7 +56,6 @@ const Posts = () => {
                         {editPost === post._id ? (
                             <EditPost post={post} update={updateMessage} cancel={() => setEditPost(null)} />
                         ) : (<>
-                                <h3>{post.title}</h3>
                                 <p>{post.message}</p>
                                 <small>par : {post.author?.username || "Auteur inconnu"}</small>
 
