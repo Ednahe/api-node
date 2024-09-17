@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../styles/send-message.css';
 
 const SendMessage = ({ messageSend }) => {
     const [message, setMessage] = useState('');
@@ -44,13 +45,14 @@ const SendMessage = ({ messageSend }) => {
         }
     }
 
-    return <div>
+    return <div className="send-message">
             <form onSubmit={sendMessage}>
                 <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Votre message"
                     required
+                    maxLength={500}
                 ></textarea>
                 <button type="submit">Envoyer</button>
             </form>

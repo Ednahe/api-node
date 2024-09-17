@@ -16,6 +16,11 @@ const postSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     }],
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        expires: '1d',
+    },
 },
 {
     timestamps: true,

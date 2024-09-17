@@ -23,7 +23,7 @@ module.exports.registerUser = async (req, res) => {
         const token = generateToken(newUser);
         res.status(201).json({ message: 'Utilisateur créé avec succès.', user: newUser, token});
     } catch (error) {
-        res.status(500).json({ message: 'Erreur lors de la création utilisateur.', error: error.message});
+        res.status(500).json({ message: 'Erreur lors de la création utilisateur, le mot de passe doit contenir entre 4 et 20 caractères assurez vous aussi que votre email soit correctement formulé.', error: error.message});
     }
 };
 

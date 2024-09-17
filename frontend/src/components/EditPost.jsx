@@ -26,8 +26,7 @@ const EditPost = ({ post, update, cancel }) => {
             update(updatePost);
 
         } catch (err) {
-            console.log(err);
-            
+            console.log(err);           
         }
     }
 

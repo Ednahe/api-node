@@ -30,7 +30,6 @@ const Inscription = () => {
                 setInscriptionOk('');
             }
 
-
         } catch (err) {
             setErrorInscription('Une erreur est survenu lors de l\'inscription.');
             setInscriptionOk('');

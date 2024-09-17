@@ -1,0 +1,9 @@
+.send-message {
+    display: flex;
+    justify-content: center;
+}
+
+.send-message > form {
+    display: flex;
+    flex-direction: column;
+}

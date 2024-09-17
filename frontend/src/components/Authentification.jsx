@@ -12,7 +12,7 @@ const Authentification = () => {
     return <>
         {login ? <Login /> : <Inscription />}
         <button onClick={switchFormLoginConnexion}>
-            {login ? "Inscrivez vous" : "Connectez vous"}
+            {login ? "Pas encore de compte ? Inscrivez vous." : "Déjà un compte ? Connectez vous."}
         </button>
     </>
 }
