@@ -62,3 +62,23 @@ export const getUser = async (userId) => {
 
     return response.json();
 };
+
+// modifier l'utilisateur
+export const updateUser = async (userId, userData) => {
+    const token = localStorage.getItem('token');
+
+    const response = await fetch(`${API_URL}/${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(userData),
+    });
+
+    if (!response.ok) {
+        throw new Error('erreur lors de l update');
+    }
+
+    return response.json();
+};

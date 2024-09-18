@@ -6,9 +6,15 @@ const Inscription = () => {
     const [password, setPassword] = useState('');
     const [inscriptionOk, setInscriptionOk] = useState('');
     const [errorInscription, setErrorInscription] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     const inscription = async (e) => {
         e.preventDefault();
+
+        if(password !== confirmPassword) {
+            setErrorInscription('Le mot de passe doit être identique dans les deux champs.');
+            return;
+        }
 
         try {
             const response = await fetch('http://localhost:5000/inscription', {
@@ -55,7 +61,13 @@ const Inscription = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
+                placeholder="mot de passe"
+                required />
+            <input
+                type='password' 
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder='confirmez le mot de passe'
                 required />
             <button type="submit">S'inscrire</button>
         </form>

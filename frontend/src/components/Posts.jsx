@@ -4,10 +4,14 @@ import '../styles/posts.css';
 import SendMessage from "./SendMessage";
 import EditPost from "./EditPost";
 import Logout from "./Logout";
+import EditUser from "./EditUser";
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
     const [editPost, setEditPost] = useState(null);
+    const [edititingUser, setEditingUser] = useState(false);
+
+    const userId = localStorage.getItem('userId');
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -49,31 +53,40 @@ const Posts = () => {
     return <>
         <h1>Hello</h1>
         <Logout />
-        <div className="card-message">
-            <ul>
-                 {posts.map((post) => (
-                     <li key={post._id}>
-                        {editPost === post._id ? (
-                            <EditPost post={post} update={updateMessage} cancel={() => setEditPost(null)} />
-                        ) : (<>
-                                <p>{post.message}</p>
-                                <small>par : {post.author?.username || "Auteur inconnu"}</small>
-
-                                {/* VERIFIER SI L UTILISATEUR EST BIEN LE CREATEUR DU MESSAGE */}
-                                {post.author && post.author._id && localStorage.getItem('userId') === post.author._id && (
+        <button onClick={() => setEditingUser(!edititingUser)}>
+            {edititingUser ? "Retour" : "Editer"}
+        </button>
+        {edititingUser ? (
+                <EditUser userId={userId}/>
+            ) : (
+                <>
+                <div className="card-message">
+                    <ul>
+                        {posts.map((post) => (
+                            <li key={post._id}>
+                                {editPost === post._id ? (
+                                    <EditPost post={post} update={updateMessage} cancel={() => setEditPost(null)} />
+                                ) : (
                                     <>
-                                        <button onClick={() => editMessage(post._id)}>Modifier</button>
-                                        <button onClick={() => deleteMessage(post._id)}>Supprimer</button>
+                                        <p>{post.message}</p>
+                                        <small>par : {post.author?.username || "Auteur inconnu"}</small>
+
+                                        {/* Vérifier si l'utilisateur est bien le créateur du message */}
+                                        {post.author && post.author._id && localStorage.getItem('userId') === post.author._id && (
+                                            <>
+                                                <button onClick={() => editMessage(post._id)}>Modifier</button>
+                                                <button onClick={() => deleteMessage(post._id)}>Supprimer</button>
+                                            </>
+                                        )}
                                     </>
                                 )}
-                            </>
-                        )}
-
-                     </li>
-                 ))}
-            </ul>
-        </div>
-        <SendMessage messageSend={newMessage} />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <SendMessage messageSend={newMessage} />
+                </>
+            )}
     </>
 }
 
