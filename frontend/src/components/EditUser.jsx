@@ -40,6 +40,7 @@ const EditUser = ({ userId }) => {
         }
     };
 
+    // résoudre problème une fois la box récupéré
     return <>
     <h1>Modifier votre profil</h1>
     {error && <p className="error">{error}</p>}
@@ -47,31 +48,31 @@ const EditUser = ({ userId }) => {
     <form onSubmit={submit}>
         <label>Pseudo :
             <input
-            type="text"
-            name="username"
-            value={userData.username}
-            onChange={editProfil}
-            required
+                type="text"
+                name="username"
+                value={userData.username}
+                onChange={editProfil}
+                required
             />
           </label>
           <label>
           Email :
           <input
-            type="email"
-            name="email"
-            value={userData.email}
-            onChange={editProfil}
-            required
+                type="email"
+                name="email"
+                value={userData.email}
+                onChange={editProfil}
+                required
           />
         </label>
         <label>
           Mot de passe :
           <input
-            type="password"
-            name="password"
-            value={userData.password}
-            onChange={editProfil}
-            placeholder="Laisser vide si inchangé"
+                type="password"
+                name="password"
+                value={userData.password}
+                onChange={editProfil}
+                placeholder="Laisser vide si inchangé"
           />
         </label>
         <button type="submit">Mettre à jour</button>

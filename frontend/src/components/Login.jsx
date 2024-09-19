@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import '../styles/login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -36,7 +37,7 @@ const Login = () => {
         }
     }
 
-    return <>
+    return <div className="card-connexion">
         <form onSubmit={connexion}>
             <input 
                 type="email" 
@@ -53,7 +54,7 @@ const Login = () => {
             <button type="submit">Se connecter</button>
         </form>
         { error && <p>{error}</p> }
-    </>
+    </div>
 }
 
 export default Login;
