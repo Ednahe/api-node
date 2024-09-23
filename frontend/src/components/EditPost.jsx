@@ -36,6 +36,7 @@ const EditPost = ({ post, update, cancel }) => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Modifier votre message"
+                maxLength={500}
             ></textarea>
             <button type="submit">Modifier</button>
             <button type="button" onClick={cancel}>Annuler</button>

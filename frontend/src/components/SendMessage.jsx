@@ -50,7 +50,7 @@ const SendMessage = ({ messageSend }) => {
                 <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Votre message"
+                    placeholder="Votre message (500 caractères maximum)"
                     required
                     maxLength={500}
                 ></textarea>
