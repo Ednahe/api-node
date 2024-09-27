@@ -5,7 +5,8 @@ const EditUser = ({ userId }) => {
     const [userData, setUserData] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: '',
     });
     const [error, setError] = useState('');
     const [succes, setSucces] = useState('');
@@ -14,7 +15,7 @@ const EditUser = ({ userId }) => {
         const fetchUserData = async () => {
             try {
                 const data = await getUser(userId);
-                setUserData({ username: data.username, email: data.email, password: ''});
+                setUserData({ username: data.username, email: data.email, password: '', confirmPassword: ''});
             } catch (err) {
                 console.log(err);
                 setError('erreur lors de la récupération des data users');
@@ -30,8 +31,21 @@ const EditUser = ({ userId }) => {
 
     const submit = async (e) => {
         e.preventDefault();
+        if(userData.password && userData.password !== userData.confirmPassword) {
+            setError('les mots de passe doivent être identique');
+            return;
+        }
+
         try {
-            await updateUser(userId, userData);
+            const { confirmPassword, ...updateData } = userData;
+
+            for (const key in updateData) {
+                if (updateData[key] === '') {
+                    delete updateData[key];
+                }
+            }
+            
+            await updateUser(userId, updateData);
             setSucces('profil édité avec succès !');
             setError('');
         } catch (err) {
@@ -40,7 +54,6 @@ const EditUser = ({ userId }) => {
         }
     };
 
-    // résoudre problème une fois la box récupéré
     return <>
     <h1>Modifier votre profil</h1>
     {error && <p className="error">{error}</p>}
@@ -71,6 +84,16 @@ const EditUser = ({ userId }) => {
                 type="password"
                 name="password"
                 value={userData.password}
+                onChange={editProfil}
+                placeholder="Laisser vide si inchangé"
+          />
+        </label>
+        <label>
+          Confirmer mot de passe :
+          <input
+                type="password"
+                name="confirmPassword"
+                value={userData.confirmPassword}
                 onChange={editProfil}
                 placeholder="Laisser vide si inchangé"
           />

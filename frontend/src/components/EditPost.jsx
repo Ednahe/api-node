@@ -30,11 +30,19 @@ const EditPost = ({ post, update, cancel }) => {
         }
     }
 
+    const enterSubmit = (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            edit(e);
+        }
+    }
+
     return <>
         <form onSubmit={edit}>
             <textarea 
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                onKeyDown={enterSubmit}
                 placeholder="Modifier votre message"
                 maxLength={500}
             ></textarea>

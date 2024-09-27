@@ -45,11 +45,19 @@ const SendMessage = ({ messageSend }) => {
         }
     }
 
+    const enterSubmit = (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage(e);
+        }
+    }
+
     return <div className="send-message">
             <form onSubmit={sendMessage}>
                 <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
+                    onKeyDown={enterSubmit}
                     placeholder="Votre message (500 caractères maximum)"
                     required
                     maxLength={500}
