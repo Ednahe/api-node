@@ -3,8 +3,12 @@ const mongoose = require('mongoose');
 const postSchema = mongoose.Schema({
     message: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
+    },
+    audioUrl: {
+        type: String,
+        required: false,
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
@@ -19,7 +23,7 @@ const postSchema = mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        expires: '1d',
+        // expires: '1d',
     },
 },
 {

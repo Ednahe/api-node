@@ -14,3 +14,34 @@ ul {
 a {
   text-decoration: none;
 }
+
+button {
+  background-color: #363636;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 20px 40px;
+  transition: background-color .3s ease, transform .3s ease, box-shadow .3s ease;
+}
+
+button:hover {
+  background-color: #4b4b4b;
+  box-shadow: 0 4px 8px #0003;
+  transform: translateY(-2px);
+}
+
+textarea {
+  background-color: #363636;
+    border: 2px solid #fff3;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px #0003;
+    color: #fff;
+    font-size: 16px;
+    height: 15vh;
+    padding: 15px;
+    resize: none;
+    transition: border-color .3s ease, box-shadow .3s ease;
+}

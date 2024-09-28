@@ -34,12 +34,12 @@ module.exports.loginUser = async (req, res) => {
 
         const user = await User.findOne({email});
         if (!user) {
-            return res.status(400).json({ message: 'Email incorrect.'})
+            return res.status(400).json({ message: 'Cet email nous est inconnu :('})
         }
 
         const passwordValide = await user.isPasswordValid(password);
         if(!passwordValide) {
-            return res.status(400).json({ message: 'Mot de passe incorrect.'})
+            return res.status(400).json({ message: 'Le mot de passe est incorrect.'})
         }
 
         const token = generateToken(user);

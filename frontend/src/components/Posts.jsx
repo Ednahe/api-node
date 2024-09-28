@@ -54,7 +54,7 @@ const Posts = () => {
         <h1>Hello</h1>
         <Logout />
         <button onClick={() => setEditingUser(!edititingUser)}>
-            {edititingUser ? "Retour" : "Editer"}
+            {edititingUser ? "Retour" : "Editer profil"}
         </button>
         {edititingUser ? (
                 <EditUser userId={userId}/>
@@ -69,7 +69,13 @@ const Posts = () => {
                                 ) : (
                                     <>
                                         <p>{post.message}</p>
-                                        <small>par : {post.author?.username || "Auteur inconnu"}</small>
+                                        <small>par : {post.author?.username}</small>
+
+                                        {post.audioUrl && (
+                                            <audio controls>
+                                                <source src={post.audioUrl} type="audio/mp3" />
+                                            </audio>
+                                        )}
 
                                         {/* Vérifier si l'utilisateur est bien le créateur du message */}
                                         {post.author && post.author._id && localStorage.getItem('userId') === post.author._id && (

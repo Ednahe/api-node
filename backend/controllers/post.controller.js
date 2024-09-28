@@ -1,11 +1,14 @@
 const postModel = require('../models/post.model');
 const userModel = require('../models/user.model');
+const { uploadToCloudinary } = require('../utils/cloudinary');
+const fs = require('fs');
 const mongoose = require('mongoose');
 
 // afficher les messages
 module.exports.getPosts = async (req, res) => {
     try {
         const posts = await postModel.find().populate('author', 'username').populate('likers', 'username');
+
         res.status(200).json(posts);
 
     } catch(error) {
@@ -17,18 +20,27 @@ module.exports.getPosts = async (req, res) => {
 module.exports.setPosts = async (req, res) => {
     try {
         const { message } = req.body;
+        const audio = req.file;
         const author = req.userId;
 
-        if (!message) {
-            return res.status(400).json({message : "Merci d'ajouter un message"});
+        if (!message && !audio) {
+            return res.status(400).json({message : "Merci d'ajouter un message ou de publier un son."});
         };
 
         if (!author) {
             return res.status(400).json({ message: "Utilisateur inconnu" });
         }
+
+        let audioUrl = null;
+
+        if (req.file) {
+            const uploadResponse = await uploadToCloudinary(req.file.path); // Utilise une fonction d'upload
+            audioUrl = uploadResponse.url;;
+        }
         
         let post = await postModel.create({
             message,
+            audioUrl: audioUrl || null,
             author: new mongoose.Types.ObjectId(author),
         });
 
