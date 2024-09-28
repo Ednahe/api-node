@@ -34,7 +34,7 @@ module.exports.setPosts = async (req, res) => {
         let audioUrl = null;
 
         if (req.file) {
-            const uploadResponse = await uploadToCloudinary(req.file.path); // Utilise une fonction d'upload
+            const uploadResponse = await uploadToCloudinary(req.file.path);
             audioUrl = uploadResponse.url;;
         }
         
