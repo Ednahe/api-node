@@ -1,1 +1,2 @@
-Un backend complet avec node.js et mongodb, l'interface utilisateur est faites avec react, l'utilisateur peut s'inscrire, se connecter, se déconnecter, envoyer, modifier ou supprimer ses messages, il peut aussi liker et disliker les messages.
+Une messagerie musicale, l'utilisateur peut s'inscrire, se connecter, se déconnecter, éditer son profil, publier des messages et des fichiers audio, modifier ou supprimer ses messages, lire ceux des autres et écouter leurs fichiers audio en direct sur l'application, l'utilisateur peut aussi liker et disliker les messages et audio.
+Le backend est fait avec node.js et mongodb, l'interface utilisateur est faites avec react.
