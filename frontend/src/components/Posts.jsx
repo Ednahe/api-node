@@ -51,38 +51,38 @@ const Posts = () => {
     };
 
     return <>
-        <h1>Hello</h1>
-        <Logout />
-        <button onClick={() => setEditingUser(!edititingUser)}>
-            {edititingUser ? "Retour" : "Editer profil"}
-        </button>
+        <div className="contain-top-btn">
+            <Logout />
+            <button onClick={() => setEditingUser(!edititingUser)}>
+                {edititingUser ? "Retour" : "Editer profil"}
+            </button>
+        </div>
         {edititingUser ? (
                 <EditUser userId={userId}/>
             ) : (
-                <>
+                <div className="contain-card-message">
                 <div className="card-message">
                     <ul>
                         {posts.map((post) => (
-                            <li key={post._id}>
+                            <li key={post._id} className="li-message">
                                 {editPost === post._id ? (
                                     <EditPost post={post} update={updateMessage} cancel={() => setEditPost(null)} />
                                 ) : (
                                     <>
-                                        <p>{post.message}</p>
-                                        <small>par : {post.author?.username}</small>
-
+                                        <h4 className="message">{post.message}</h4>
                                         {post.audioUrl && (
                                             <audio controls>
                                                 <source src={post.audioUrl} type="audio/mp3" />
                                             </audio>
                                         )}
+                                        <small>par : {post.author?.username}</small>
 
                                         {/* Vérifier si l'utilisateur est bien le créateur du message */}
                                         {post.author && post.author._id && localStorage.getItem('userId') === post.author._id && (
-                                            <>
+                                            <div className="contain-btn-edit">
                                                 <button onClick={() => editMessage(post._id)}>Modifier</button>
                                                 <button onClick={() => deleteMessage(post._id)}>Supprimer</button>
-                                            </>
+                                            </div>
                                         )}
                                     </>
                                 )}
@@ -91,7 +91,7 @@ const Posts = () => {
                     </ul>
                 </div>
                 <SendMessage messageSend={newMessage} />
-                </>
+                </div>
             )}
     </>
 }

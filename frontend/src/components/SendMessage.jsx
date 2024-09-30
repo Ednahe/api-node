@@ -79,7 +79,7 @@ const SendMessage = ({ messageSend }) => {
                 <button type="submit" disabled={uploading}>Envoyer</button>
             </form>
             {error && <p>{error}</p>}
-            {uploading && <p>En cours d'envoi ...(environ 10 à 15 secondes).</p>}
+            {uploading && <p>En cours d'envoi ...(environ une dizaine de secondes).</p>}
     </div>
 }
 
