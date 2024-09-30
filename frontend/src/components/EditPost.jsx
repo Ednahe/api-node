@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { editPost } from "../services/postService";
+import '../styles/edit.css';
 
 const EditPost = ({ post, update, cancel }) => {
     const [message, setMessage] = useState(post.message);
@@ -46,8 +47,10 @@ const EditPost = ({ post, update, cancel }) => {
                 placeholder="Modifier votre message"
                 maxLength={500}
             ></textarea>
-            <button type="submit">Modifier</button>
-            <button type="button" onClick={cancel}>Annuler</button>
+            <div className="contain-btn-edit">
+                <button type="submit">Modifier</button>
+                <button type="button" onClick={cancel}>Annuler</button>
+            </div>
         </form>
         {error && <p>{error}</p>}
     </>

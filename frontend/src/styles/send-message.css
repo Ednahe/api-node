@@ -1,9 +1,13 @@
 .send-message {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .send-message > form {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }

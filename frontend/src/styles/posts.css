@@ -100,6 +100,11 @@ audio::-webkit-media-controls-volume-slider:hover {
     border-bottom: 1px dashed white;
 }
 
+.li-message > form {
+    display: flex;
+    flex-direction: column;
+}
+
 ul {
     display: flex;
     flex-direction: column;

@@ -1,0 +1,5 @@
+.contain-btn-edit {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0;
+}
