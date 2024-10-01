@@ -47,6 +47,23 @@ textarea {
     transition: border-color .3s ease, box-shadow .3s ease;
 }
 
+.contain-auth {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  gap: 2rem;
+  width: 50%;
+  margin: 0 auto;
+  border: 2px double white;
+  border-radius: 8px;
+}
+
+.card-connexion > form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 @media (max-width: 500px) {
   
   textarea {

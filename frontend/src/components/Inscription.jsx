@@ -43,37 +43,37 @@ const Inscription = () => {
         }
     };
 
-    return <>
-        <form onSubmit={inscription}>
-            <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
-                required />
-            <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                required />
-            <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="mot de passe"
-                required />
-            <input
-                type='password' 
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder='confirmez le mot de passe'
-                required />
-            <button type="submit">S'inscrire</button>
-        </form>
-        {inscriptionOk && <p>{inscriptionOk}</p>}
-        {errorInscription && <p>{errorInscription}</p>}
-        </>
+    return <div className="card-connexion">
+            <form onSubmit={inscription}>
+                <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Username"
+                    required />
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
+                    required />
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="mot de passe"
+                    required />
+                <input
+                    type='password' 
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder='confirmez le mot de passe'
+                    required />
+                <button type="submit">S'inscrire</button>
+                {inscriptionOk && <p>{inscriptionOk}</p>}
+                {errorInscription && <p>{errorInscription}</p>}
+            </form>
+        </div>
 };
 
 export default Inscription;

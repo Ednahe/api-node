@@ -52,8 +52,8 @@ const Login = () => {
                 placeholder="Password"
                 required />
             <button type="submit">Se connecter</button>
+            { error && <p>{error}</p> }
         </form>
-        { error && <p>{error}</p> }
     </div>
 }
 
