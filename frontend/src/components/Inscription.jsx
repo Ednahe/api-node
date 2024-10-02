@@ -49,7 +49,7 @@ const Inscription = () => {
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Username"
+                    placeholder="Pseudo"
                     required />
                 <input
                     type="email"

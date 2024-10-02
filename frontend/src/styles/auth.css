@@ -1,0 +1,16 @@
+.contain-auth {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    gap: 2rem;
+    width: 50%;
+    margin: 0 auto;
+    border: 2px double white;
+    border-radius: 8px;
+}
+
+.contain-btn-connect {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}

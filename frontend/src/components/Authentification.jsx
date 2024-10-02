@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Login from "./Login";
 import Inscription from "./Inscription";
+import '../styles/auth.css';
 
 const Authentification = () => {
     const [login, setLogin] = useState(true);
@@ -11,9 +12,11 @@ const Authentification = () => {
 
     return <div className="contain-auth">
         {login ? <Login /> : <Inscription />}
-        <button onClick={switchFormLoginConnexion}>
-            {login ? "Pas encore de compte ? Inscrivez vous." : "Déjà un compte ? Connectez vous."}
-        </button>
+        <div className="contain-btn-connect">
+            <button onClick={switchFormLoginConnexion}>
+                {login ? "Pas encore de compte ? Inscrivez vous." : "Déjà un compte ? Connectez vous."}
+            </button>
+        </div>
     </div>
 }
 

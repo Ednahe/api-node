@@ -35,33 +35,34 @@ button:hover {
 
 textarea {
   background-color: #363636;
-    border: 2px solid #fff3;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px #0003;
-    color: #fff;
-    font-size: 16px;
-    height: 15vh;
-    width: 50vw;
-    padding: 15px;
-    resize: none;
-    transition: border-color .3s ease, box-shadow .3s ease;
-}
-
-.contain-auth {
-  display: flex;
-  flex-direction: column;
-  padding: 3rem;
-  gap: 2rem;
-  width: 50%;
-  margin: 0 auto;
-  border: 2px double white;
+  border: 2px solid #fff3;
   border-radius: 8px;
+  box-shadow: 0 4px 8px #0003;
+  color: #fff;
+  font-size: 16px;
+  height: 15vh;
+  width: 50vw;
+  padding: 15px;
+  resize: none;
+  transition: border-color .3s ease, box-shadow .3s ease;
 }
 
 .card-connexion > form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+input {
+  padding: .75em .77em;
+  background-color: #242424;
+  border: 1px solid #7a7a7a;
+}
+
+input:focus {
+  border: 1px solid rgb(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
 }
 
 @media (max-width: 500px) {
