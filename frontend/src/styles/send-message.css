@@ -11,3 +11,7 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.p-error {
+    text-align: center;
+}

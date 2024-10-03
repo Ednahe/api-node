@@ -6,14 +6,14 @@ import '../styles/auth.css';
 const Authentification = () => {
     const [login, setLogin] = useState(true);
 
-    const switchFormLoginConnexion = () => {
+    const switchLoginInscription = () => {
         setLogin(!login);
     };
 
     return <div className="contain-auth">
         {login ? <Login /> : <Inscription />}
         <div className="contain-btn-connect">
-            <button onClick={switchFormLoginConnexion}>
+            <button onClick={switchLoginInscription}>
                 {login ? "Pas encore de compte ? Inscrivez vous." : "Déjà un compte ? Connectez vous."}
             </button>
         </div>

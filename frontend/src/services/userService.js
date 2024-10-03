@@ -82,3 +82,21 @@ export const updateUser = async (userId, userData) => {
 
     return response.json();
 };
+
+// supprimer l'utilisateur
+export const deleteUser = async (userId) => {
+    const token = localStorage.getItem('token');
+
+    const response = await fetch(`${API_URL}/${userId}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error('erreur lors de la suppression du compte');
+    }
+
+    return response.json();
+};

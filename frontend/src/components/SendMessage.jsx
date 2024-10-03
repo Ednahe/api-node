@@ -78,8 +78,8 @@ const SendMessage = ({ messageSend }) => {
                 <input type="file" accept="audio/*" onChange={(e) => setAudio(e.target.files[0])} />
                 <button type="submit" disabled={uploading}>Envoyer</button>
             </form>
-            {error && <p>{error}</p>}
-            {uploading && <p>En cours d'envoi ...(cela peut prendre une dizaine de secondes).</p>}
+            {error && <p className="p-error">{error}</p>}
+            {uploading && <p className="p-error">En cours d'envoi ...(cela peut prendre quelques secondes).</p>}
     </div>
 }
 

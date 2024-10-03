@@ -15,6 +15,10 @@ a {
   text-decoration: none;
 }
 
+header > h1 {
+  text-align: center;
+}
+
 button {
   background-color: #363636;
   border: none;
@@ -57,12 +61,13 @@ input {
   padding: .75em .77em;
   background-color: #242424;
   border: 1px solid #7a7a7a;
+  color: #fff;
 }
 
 input:focus {
   border: 1px solid rgb(255, 255, 255, 0.5);
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 @media (max-width: 500px) {

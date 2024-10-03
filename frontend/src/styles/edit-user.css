@@ -1,0 +1,18 @@
+.label-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-edit-user {
+    margin: 0 auto;
+    border: 2px double white;
+    width: 50%;
+    padding: 3rem;
+    gap: 2rem;
+    border-radius: 8px;
+}
+
+.error, .success {
+    text-align: center;
+}
