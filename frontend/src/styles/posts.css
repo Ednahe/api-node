@@ -1,5 +1,6 @@
 .card-message {
     max-width: 1200px;
+    width: 90%;
     margin: 0 auto;
     max-height: 60vh; 
     overflow-y: auto;  
@@ -46,6 +47,10 @@
     padding-bottom: 15px;
 }
 
+.contain-top-btn > button {
+    margin: 0 20px;
+}
+
 .contain-card-message {
     display: flex;
     flex-direction: column;
@@ -80,6 +85,7 @@ audio::-webkit-media-controls-panel {
     display: flex;
     flex-direction: row;
     gap: 10px;
+    margin: 15px 0;
 }
 
 .li-message {
@@ -100,9 +106,15 @@ ul {
     gap: 10px;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 650px) {
     .contain-top-btn {
         flex-direction: column;
         gap: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    .contain-btn-edit {
+        flex-direction: column;
     }
 }

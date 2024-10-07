@@ -52,7 +52,8 @@ const SendMessage = ({ messageSend }) => {
 
         } catch (err) {
             console.log(err);
-            setError('Erreur lors de l\'envoi du message.');
+            setError('Erreur lors de l\'envoi du message, seuls les fichiers faisant moins de 20 Mo sont autorisés..');
+            
         } finally {
             setUploading(false);
         }

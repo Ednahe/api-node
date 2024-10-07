@@ -17,7 +17,7 @@ const DeleteUser = ({ userId }) => {
 
     return <div className="delete-user">
             <h2>Êtes-vous sûr de vouloir supprimer votre compte ?</h2>
-            <button onClick={killUser}>Confirmer la suppression</button>
+            <button onClick={killUser}>Supprimer définitivement votre compte</button>
     </div>
 };
 

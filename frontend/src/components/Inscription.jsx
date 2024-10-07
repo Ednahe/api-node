@@ -69,9 +69,9 @@ const Inscription = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder='confirmez le mot de passe'
                     required />
+                {inscriptionOk && <p className='p-error'>{inscriptionOk}</p>}
+                {errorInscription && <p className='p-error'>{errorInscription}</p>}
                 <button type="submit">S'inscrire</button>
-                {inscriptionOk && <p>{inscriptionOk}</p>}
-                {errorInscription && <p>{errorInscription}</p>}
             </form>
         </div>
 };

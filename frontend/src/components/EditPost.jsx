@@ -52,7 +52,7 @@ const EditPost = ({ post, update, cancel }) => {
                 <button type="button" onClick={cancel}>Annuler</button>
             </div>
         </form>
-        {error && <p>{error}</p>}
+        {error && <p className='p-error'>{error}</p>}
     </>
 }
 

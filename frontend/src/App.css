@@ -1,5 +1,13 @@
-p, div, h1, h2, h3, h4, h5 {
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sixtyfour+Convergence&display=swap');
+
+button {
+  font-family: "Sixtyfour Convergence", sans-serif;
+}
+
+p, div, span, h1, h2, h3, h4, h5 {
   color: #fff;
+  font-family: "Merriweather", serif;
 }
 
 body {
@@ -68,6 +76,10 @@ input:focus {
   border: 1px solid rgb(255, 255, 255, 0.5);
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
   border-radius: 4px;
+}
+
+.p-error {
+  text-align: center;
 }
 
 @media (max-width: 500px) {

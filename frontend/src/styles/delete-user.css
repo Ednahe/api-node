@@ -2,3 +2,19 @@
     display: flex;
     flex-direction: column;
 }
+
+.delete-user > h2 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 400px) {
+    .delete-user > h2 {
+        font-size: 1.2rem;
+    }
+
+    .delete-user > button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}

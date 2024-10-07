@@ -68,7 +68,7 @@ const EditUser = ({ userId }) => {
         <DeleteUser userId={userId} />
       ) : (
         <form onSubmit={submit}>
-          <h1>Modifier votre profil</h1>
+          <h1 className="title-edit">Modifier votre profil</h1>
           <label className="label-edit">
             Pseudo :
             <input
@@ -109,12 +109,12 @@ const EditUser = ({ userId }) => {
               placeholder="Laisser vide si inchangé"
             />
           </label>
+          {error && <p className="error">{error}</p>}
+          {succes && <p className="success">{succes}</p>}
           <button type="submit">Mettre à jour</button>
           <button type="button" onClick={() => setDeleteProfil(true)}>
             Supprimer le compte
           </button>
-          {error && <p className="error">{error}</p>}
-          {succes && <p className="success">{succes}</p>}
         </form>
       )}
     </div>
