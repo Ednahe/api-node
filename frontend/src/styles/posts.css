@@ -38,6 +38,10 @@
     }
 }
 
+.title-post {
+    text-align: center;
+}
+
 .contain-top-btn {
     display: flex;
     align-items: center;

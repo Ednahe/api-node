@@ -61,6 +61,7 @@ const Posts = () => {
                 <EditUser userId={userId}/>
             ) : (
                 <div className="contain-card-message">
+                <h3 className="title-post">Bienvenue sur e c h o, l'application ou tu peux partager ton son jusqu'à 20 Mo maximum.</h3>
                 <div className="card-message">
                     <ul>
                         {posts.map((post) => (
