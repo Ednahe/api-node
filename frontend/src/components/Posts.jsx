@@ -71,6 +71,7 @@ const Posts = () => {
                                 ) : (
                                     <>
                                         <h4 className="message">{post.message}</h4>
+                                        {/* traiter soucis mobile  */}
                                         {post.audioUrl && (
                                             <audio controls>
                                                 <source src={post.audioUrl} type="audio/mp3" />

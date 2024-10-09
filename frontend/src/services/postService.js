@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/post";
+const API_URL = "https://api-node-ou4w.onrender.com/post";
 
 // afficher les messages
 export const getPosts = async () => {
