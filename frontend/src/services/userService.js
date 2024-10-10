@@ -1,4 +1,4 @@
-const API_URL = "https://api-node-ou4w.onrender.com";
+const API_URL = "http://localhost:5000";
 
 // inscription
 export const registerUser = async (userData) => {

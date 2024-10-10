@@ -30,7 +30,7 @@ const SendMessage = ({ messageSend }) => {
 
             setUploading(true);
 
-            const response = await fetch('https://api-node-ou4w.onrender.com/post', {
+            const response = await fetch('http://localhost:5000/post', {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`
