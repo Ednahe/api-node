@@ -5,6 +5,9 @@ import SendMessage from "./SendMessage";
 import EditPost from "./EditPost";
 import Logout from "./Logout";
 import EditUser from "./EditUser";
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:5000');
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
@@ -24,6 +27,19 @@ const Posts = () => {
         };
 
         fetchPosts();
+
+        // afficher les messages en temps réel
+        socket.on('newMessage', (newPost) => {
+            setPosts((prevPosts) => [...prevPosts, newPost]);
+        });
+
+        socket.on('connect', () => {
+            console.log('test socket');
+        });
+
+        return () => {
+            socket.off('newMessage');
+        };
     }, []);
 
     const newMessage = (newPost) => {
