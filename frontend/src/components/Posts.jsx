@@ -30,7 +30,13 @@ const Posts = () => {
 
         // afficher les messages en temps réel
         socket.on('newMessage', (newPost) => {
-            setPosts((prevPosts) => [...prevPosts, newPost]);
+            setPosts((prevPosts) => {
+                const noDuplicate = prevPosts.some((post) => post._id === newPost._id);
+                if (!noDuplicate) {
+                    return [...prevPosts, newPost];
+                }
+                return prevPosts;
+            });
         });
 
         socket.on('connect', () => {

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import '../styles/send-message.css';
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:5000');
 
 const SendMessage = ({ messageSend }) => {
     const [message, setMessage] = useState('');
@@ -45,6 +48,11 @@ const SendMessage = ({ messageSend }) => {
             }
 
             const newPost = await response.json();
+
+            messageSend(newPost);
+
+            socket.emit('sendMessage', newPost);
+
             messageSend(newPost);
             setMessage('');
             setAudio(null);

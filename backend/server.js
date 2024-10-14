@@ -31,7 +31,6 @@ app.use('/', users);
 io.on('connection', (socket) => {
     console.log('user connect');
     
-    // a travailler
     socket.on('sendMessage', (data) => {
         console.log('message send', data);
         
