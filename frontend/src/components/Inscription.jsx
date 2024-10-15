@@ -17,7 +17,7 @@ const Inscription = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/inscription', {
+            const response = await fetch('https://api-node-ou4w.onrender.com/inscription', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json' 

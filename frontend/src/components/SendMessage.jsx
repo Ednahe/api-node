@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import '../styles/send-message.css';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://api-node-ou4w.onrender.com');
 
 const SendMessage = ({ messageSend }) => {
     const [message, setMessage] = useState('');
@@ -33,7 +33,7 @@ const SendMessage = ({ messageSend }) => {
 
             setUploading(true);
 
-            const response = await fetch('http://localhost:5000/post', {
+            const response = await fetch('https://api-node-ou4w.onrender.com/post', {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`

@@ -7,7 +7,7 @@ import Logout from "./Logout";
 import EditUser from "./EditUser";
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://api-node-ou4w.onrender.com');
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
