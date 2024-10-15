@@ -39,9 +39,7 @@ const Posts = () => {
             });
         });
 
-        socket.on('connect', () => {
-            console.log('test socket');
-        });
+        socket.on('connect');
 
         return () => {
             socket.off('newMessage');

@@ -29,13 +29,12 @@ app.use("/post", posts);
 app.use('/', users);
 
 io.on('connection', (socket) => {
-    console.log('user connect');
     
     socket.on('sendMessage', (data) => {
-        console.log('message send', data);
         
         // afficher les messages en temps réel pour tlm
         io.emit('newMessage', data);
+        console.log('test voir si ça passe');
     });
 
     socket.on('disconnect', () => {
